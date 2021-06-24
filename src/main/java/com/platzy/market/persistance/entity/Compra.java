@@ -12,7 +12,7 @@ public class Compra {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="compras")
+    @Column(name="id_compra")
     private Integer idCompra;
 
     @Column(name="id_cliente")
@@ -22,9 +22,7 @@ public class Compra {
 
     @Column(name="medio_pago")
     private String medioPago;
-
     private String comentario;
-
     private String estado;
 
     @ManyToOne
@@ -32,7 +30,7 @@ public class Compra {
     private Clientes cliente;
 
 
-    @OneToMany(mappedBy = "compra", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL,fetch=FetchType.EAGER)
     private List<ComprasProducto> productos;
     //GETTER AND SETTERS-------------------------------------------
 
